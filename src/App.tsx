@@ -34,16 +34,17 @@ export default function App() {
   }, [passwordGenerator]);
   return (
     <>
-      {showAlert && (
-        <Alert className="mt-4">
-          <CheckCircle2Icon />
-          <AlertTitle>Password Copied to Clipboard</AlertTitle>
-          <AlertDescription>
-            Your password has been successfully copied.
-          </AlertDescription>
-        </Alert>
-      )}
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-700 via-indigo-800 to-gray-900 p-4">
+        {showAlert && (
+          <Alert className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+            <CheckCircle2Icon />
+            <AlertTitle>Password Copied to Clipboard</AlertTitle>
+            <AlertDescription>
+              Your password has been successfully copied.
+            </AlertDescription>
+          </Alert>
+        )}
+
         <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-6 sm:p-8 md:p-10">
           <h1 className="text-2xl sm:text-3xl font-bold text-white text-center mb-4">
             Password Generator
