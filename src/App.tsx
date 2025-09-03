@@ -2,14 +2,21 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "./Components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "./Components/ui/alert";
 import { CheckCircle2Icon } from "lucide-react";
+import ColorButtons from "./Components/ui/ColorButtons";
 
 export default function App() {
-  const [length, setLength] = useState(6);
-  const [numAllowed, setNumAllowed] = useState(false);
-  const [charAllowed, setcharAllowed] = useState(false);
-  const [pass, setPass] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
+  const [length, setLength] = useState<number>(6);
+  const [numAllowed, setNumAllowed] = useState<boolean>(false);
+  const [charAllowed, setcharAllowed] = useState<boolean>(false);
+  const [pass, setPass] = useState<string>("");
+  const [showAlert, setShowAlert] = useState<boolean>(false);
+
+  const [bgColor, setBgColor] = useState<string>(
+    "bg-gradient-to-r from-purple-700 via-indigo-800 to-gray-900 p-4"
+  );
+
   const input = useRef<HTMLInputElement | null>(null);
+
   const copyPass = useCallback(() => {
     if (input.current) {
       input.current.select();
@@ -18,34 +25,38 @@ export default function App() {
       setTimeout(() => setShowAlert(false), 2000);
     }
   }, [pass]);
+
   const passwordGenerator = useCallback(() => {
     let password = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     if (numAllowed) str += "0123456789";
     if (charAllowed) str += "!@#$%^&*()_+[]{}|;:,.<>?/`~-=";
+
     for (let i = 0; i < length; i++) {
-      let char = Math.floor(Math.random() * str.length);
+      const char = Math.floor(Math.random() * str.length);
       password += str.charAt(char);
     }
     setPass(password);
-  }, [length, numAllowed, charAllowed, setPass]);
+  }, [length, numAllowed, charAllowed]);
+
   useEffect(() => {
     passwordGenerator();
   }, [passwordGenerator]);
-  return (
-    <>
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-700 via-indigo-800 to-gray-900 p-4">
-        {showAlert && (
-          <Alert className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-            <CheckCircle2Icon />
-            <AlertTitle>Password Copied to Clipboard</AlertTitle>
-            <AlertDescription>
-              Your password has been successfully copied.
-            </AlertDescription>
-          </Alert>
-        )}
 
-        <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-6 sm:p-8 md:p-10">
+  return (
+    <div className={`min-h-screen flex flex-col duration-200 ${bgColor}`}>
+      {showAlert && (
+        <Alert className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+          <CheckCircle2Icon />
+          <AlertTitle>Password Copied to Clipboard</AlertTitle>
+          <AlertDescription>
+            Your password has been successfully copied.
+          </AlertDescription>
+        </Alert>
+      )}
+
+      <div className="flex-1 flex items-center justify-center">
+        <div className="w-full max-w-md bg-gray-800/35 rounded-lg shadow-lg p-6 backdrop-blur-sm">
           <h1 className="text-2xl sm:text-3xl font-bold text-white text-center mb-4">
             Password Generator
           </h1>
@@ -60,6 +71,7 @@ export default function App() {
             />
             <Button onClick={copyPass}>Copy</Button>
           </div>
+
           <div className="flex flex-col sm:flex-row justify-around gap-4">
             <div className="text-white font-semibold flex flex-col">
               <input
@@ -97,6 +109,7 @@ export default function App() {
           </div>
         </div>
       </div>
-    </>
+      <ColorButtons setColor={setBgColor} />
+    </div>
   );
 }
