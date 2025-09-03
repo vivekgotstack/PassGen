@@ -36,16 +36,16 @@ export default function App() {
     <>
       {showAlert && (
         <Alert className="mt-4">
-          <CheckCircle2Icon/>
+          <CheckCircle2Icon />
           <AlertTitle>Password Copied to Clipboard</AlertTitle>
           <AlertDescription>
             Your password has been successfully copied.
           </AlertDescription>
         </Alert>
       )}
-      <div className="min-h-screen flex items-center justify-center bg-gray-900">
-        <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-6">
-          <h1 className="text-2xl font-bold text-white text-center mb-4">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-700 via-indigo-800 to-gray-900 p-4">
+        <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-6 sm:p-8 md:p-10">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white text-center mb-4">
             Password Generator
           </h1>
           <div className="flex shadow rounded-lg overflow-hidden mb-4 justify-between bg-gray-300 p-4">
@@ -59,41 +59,35 @@ export default function App() {
             />
             <Button onClick={copyPass}>Copy</Button>
           </div>
-          <div className="flex justify-around">
+          <div className="flex flex-col sm:flex-row justify-around gap-4">
             <div className="text-white font-semibold flex flex-col">
               <input
                 type="range"
                 min={6}
                 max={20}
                 value={length}
-                onChange={(e) => {
-                  setLength(Number(e.target.value));
-                }}
+                onChange={(e) => setLength(Number(e.target.value))}
                 className="cursor-pointer"
               />
-              <label className="">Length: {length}</label>
+              <label>Length: {length}</label>
             </div>
-            <div className="text-white font-semibold">
+            <div className="text-white font-semibold flex items-center">
               <input
                 type="checkbox"
                 checked={numAllowed}
                 id="numberInput"
-                onChange={() => {
-                  setNumAllowed((prev) => !prev);
-                }}
+                onChange={() => setNumAllowed((prev) => !prev)}
               />
               <label htmlFor="numberInput" className="ml-2">
                 Add Numbers
               </label>
             </div>
-            <div className="text-white font-semibold">
+            <div className="text-white font-semibold flex items-center">
               <input
                 type="checkbox"
                 checked={charAllowed}
                 id="charInput"
-                onChange={() => {
-                  setcharAllowed((prev) => !prev);
-                }}
+                onChange={() => setcharAllowed((prev) => !prev)}
               />
               <label htmlFor="charInput" className="ml-2">
                 Add Symbols
