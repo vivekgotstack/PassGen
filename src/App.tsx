@@ -7,9 +7,12 @@ export default function App() {
   const [charAllowed, setcharAllowed] = useState(false);
   const [pass, setPass] = useState("");
   const input = useRef<HTMLInputElement | null>(null);
-  const inputFocus = () => {
-    input.current?.select();
-  };
+  const copyPass = useCallback(() => {
+    if (input.current) {
+      input.current.select();
+      window.navigator.clipboard.writeText(pass);
+    }
+  }, [pass]);
   const passwordGenerator = useCallback(() => {
     let password = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -35,10 +38,11 @@ export default function App() {
             type="text"
             className="outline-none w-full"
             value={pass}
+            ref={input}
             placeholder="Password..."
             readOnly
           />
-          <Button onClick={inputFocus}>Copy</Button>
+          <Button onClick={copyPass}>Copy</Button>
         </div>
         <div className="flex justify-around">
           <div className="text-white font-semibold flex flex-col">
@@ -70,7 +74,7 @@ export default function App() {
           <div className="text-white font-semibold">
             <input
               type="checkbox"
-              defaultChecked={charAllowed}
+              checked={charAllowed}
               id="charInput"
               onChange={() => {
                 setcharAllowed((prev) => !prev);
