@@ -1,69 +1,64 @@
-# React + TypeScript + Vite
+<h1 align="center">🔐 PassGen</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**PassGen** is a modern, fast, and secure password generator built with **React**, **TypeScript**, and **Vite**.  
+It helps you create strong, unique passwords in seconds — no need to overthink your security.  
+Pair it with its brother app, **[LockReserve](https://github.com/vivekgotstack/LockReserve)**, to safely store everything you generate.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ⚡ Instant password generation  
+- 🔠 Adjustable length and character types  
+- 🧠 Password strength indicator  
+- 📋 One-click copy to clipboard  
+- 🤝 Works seamlessly with **LockReserve**  
+- 🧩 Built with modern tech (React + TypeScript + Vite)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **Frontend:** React + TypeScript  
+- **Build Tool:** Vite  
+- **Styling:** TailwindCSS  
+- **Deployment:** Vercel  
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the repo
+```bash
+git clone https://github.com/vivekgotstack/PassGen.git
+cd PassGen
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Install dependencies
+```bash
+npm install
 ```
+### 3. Run the development server
+```bash
+npm run dev
+```
+Then open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## 🧩 Project Structure
+PassGen/ <br/>
+├── src/ <br/>
+│ ├── components/ # UI components <br/>
+│ ├── hooks/ # Custom React hooks <br/>
+│ ├── utils/ # Helper functions <br/>
+│ ├── App.tsx # Root component <br/>
+│ └── main.tsx # Entry point <br/>
+├── public/ # Static assets <br/>
+├── index.html <br/>
+└── vite.config.ts <br/>
+
+---
+
+
+git clone https://github.com/vivekgotstack/PassGen.git
+cd PassGen
