@@ -23,7 +23,7 @@ const gradients = [
   },
   {
     name: "Arctic Ice",
-    value: "bg-gradient-to-r from-blue-100 via-cyan-200 to-teal-300",
+    value: "bg-gradient-to-r from-blue-200 via-cyan-300 to-teal-400",
   },
   {
     name: "Olive Grove",
